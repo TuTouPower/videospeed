@@ -9,6 +9,7 @@ import '../utils/constants.js';
 import '../utils/logger.js';
 import '../utils/debug-helper.js';
 import '../utils/dom-utils.js';
+import '../utils/gif-like-video.js';
 
 // Speed arbitration: pure decision core + intent classifier + adapter.
 // Must precede event-manager.js and video-controller.js, which construct

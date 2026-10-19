@@ -99,10 +99,10 @@ class SiteHandlerManager {
     }
 
     // Detect gif-like videos: muted looping videos with no native controls.
-    // Sites like Telegram, X, Imgur serve animated stickers/GIFs as <video
-    // autoplay loop muted> elements. Showing a speed overlay on these is
-    // visually noisy and not useful.
-    if (video.tagName === 'VIDEO' && video.loop && video.muted && !video.controls) {
+    // Sites like Telegram and Imgur serve animated stickers/GIFs as <video
+    // autoplay loop muted> elements. On X/Twitter the same attributes also
+    // describe real timeline videos, so isGifLikeVideo narrows the skip there.
+    if (window.VSC.isGifLikeVideo(video)) {
       window.VSC.logger.debug('Video ignored: gif-video pattern (loop + muted + no controls)');
       return true;
     }
